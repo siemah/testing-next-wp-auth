@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signin } from "./action";
 
+export const runtime = "edge";
 export default function Signin() {
   return (
     <div className="grid min-h-lvh w-full place-items-center">
