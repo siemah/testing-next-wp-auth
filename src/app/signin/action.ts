@@ -2,7 +2,7 @@
 
 export async function signin(fd: FormData) {
   try {
-    const url = `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/signin`;
+    const url = `https://data-source.zzenz.com/wp-json/zz-mobile-app/v1/auth/signin`;
     const credentials = {
       phone: fd.get("phone_number"),
       password: fd.get("password"),
