@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
         headers: _headers,
       },
     );
-    console.log(`req---->`, req);
+    console.log(`req---->`, req.headers);
     const res = await req.json();
   } catch (error) {
     console.log(`error----->`, error);
