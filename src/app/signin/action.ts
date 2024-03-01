@@ -39,7 +39,7 @@ export async function signin(fd: FormData) {
         expires: expires?.[index],
         secure: true,
       });
-      console.log(`cookie ${name} added`, res);
+      console.log(`cookie ${name} added`, res.get(name));
     });
     // request.headers
     //   .getSetCookie()
