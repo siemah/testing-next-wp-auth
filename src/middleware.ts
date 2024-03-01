@@ -16,8 +16,8 @@ export async function middleware(request: NextRequest) {
       _cookie.get("_uid")?.value,
     );
     let hdrs = new Headers(_headers);
-    hdrs.append("Cookie", _cookie.get("_uid")?.value);
-    hdrs.append("Set-Cookie", _cookie.get("_uid")?.value);
+    hdrs.append("Cookie", `${_cookie.get("_uid")?.value}`);
+    hdrs.append("Set-Cookie", `${_cookie.get("_uid")?.value}`);
     const req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
