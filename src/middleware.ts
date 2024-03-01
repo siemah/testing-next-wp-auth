@@ -24,12 +24,27 @@ export async function middleware(request: NextRequest) {
       },
     );
     console.log(
+      `response ===---->`,
+      req.headers.get("Cookie"),
+      `response ===---->`,
+      req.headers.getSetCookie(),
+    );
+    let res = await req.json();
+    req = await fetch(
+      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
+      {
+        headers: {
+          Cookie: `${_cookie.get("_uid")?.value}`,
+        },
+      },
+    );
+    console.log(
       `response2 ===---->`,
       req.headers.get("Cookie"),
       `response2 ===---->`,
       req.headers.getSetCookie(),
     );
-    let res = await req.json();
+    res = await req.json();
   } catch (error) {
     // @ts-ignore
     console.log(`error----->`, error);
