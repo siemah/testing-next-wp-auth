@@ -37,6 +37,7 @@ export async function signin(fd: FormData) {
         maxAge: parsedCookie?.["Max-Age"],
         path: parsedCookie.path,
         expires: expires?.[index],
+        httpOnly: true,
         secure: true,
       });
       console.log(`cookie ${name} added`, res.get(name));
