@@ -8,8 +8,8 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const _cookie = cookies();
   const _headers = headers();
-  console.log(`_cookie--------------->`, _cookie);
-  console.log(`_headers--------------->`, _headers);
+  // console.log(`_cookie--------------->`, _cookie);
+  // console.log(`_headers--------------->`, _headers);
   try {
     const req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
   } catch (error) {
     console.log(`error----->`, error);
   }
-  console.log(`pathname: ${pathname}`, _cookie);
+  console.log(`pathname: ${pathname}`, _cookie.toString());
   // const isSignedIn = user !== null && user !== undefined;
   // const isSignInPath = pathname.includes("/signin") === true;
 
