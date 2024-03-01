@@ -22,7 +22,10 @@ export async function middleware(request: NextRequest) {
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
         // credentials: "include",
-        headers: hdrs,
+        headers: {
+          Cookie: `${_cookie.get("_uid")?.value}`,
+          "Set-Cookie": `${_cookie.get("_uid")?.value}`,
+        },
       },
     );
     const res = await req.json();
