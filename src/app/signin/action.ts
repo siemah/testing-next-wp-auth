@@ -2,12 +2,12 @@
 
 export async function signin(fd: FormData) {
   try {
-    const url = `https://data-source.zzenz.com/wp-json/zz-mobile-app/v1/auth/signin`;
+    const url = `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/signin`;
     const credentials = {
-      email: fd.get("phone_number"),
-      password: fd.get("password"),
+      phone: fd.get("phone_number"), // 556768787
+      password: fd.get("password"), // qweQWE123
     };
-    console.log(`credentials`, credentials);
+    console.log(`anf dz credentials-->`, credentials);
     const request = await fetch(url, {
       method: "POST",
       headers: {

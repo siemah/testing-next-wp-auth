@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
   console.log(`_headers--------------->`, _headers);
   try {
     const req = await fetch(
-      `https://data-source.zzenz.com/wp-json/zz-mobile-app/v1/auth/refresh`,
+      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
         headers: _headers,
       },
