@@ -21,7 +21,6 @@ export async function middleware(request: NextRequest) {
     let req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
-        credentials: "include",
         headers: {
           Cookie: `${_cookie.get("_uid")?.value}`,
           "Set-Cookie": `${_cookie.get("_uid")?.value}`,
@@ -33,17 +32,6 @@ export async function middleware(request: NextRequest) {
     req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
-        // credentials: "include",
-        headers: _headers,
-      },
-    );
-    res = await req.json();
-    console.log(`response ===---->`, res);
-    console.log(`response2 ===---->`, res);
-    req = await fetch(
-      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
-      {
-        credentials: "include",
         headers: _headers,
       },
     );
@@ -52,16 +40,6 @@ export async function middleware(request: NextRequest) {
     req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
-        credentials: "include",
-        headers: hdrs,
-      },
-    );
-    res = await req.json();
-    console.log(`response ===---->`, res);
-    req = await fetch(
-      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
-      {
-        // credentials: "include",
         headers: hdrs,
       },
     );
