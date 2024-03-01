@@ -18,17 +18,54 @@ export async function middleware(request: NextRequest) {
     let hdrs = new Headers(_headers);
     hdrs.append("Cookie", `${_cookie.get("_uid")?.value}`);
     hdrs.append("Set-Cookie", `${_cookie.get("_uid")?.value}`);
-    const req = await fetch(
+    let req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
-        // credentials: "include",
+        credentials: "include",
         headers: {
           Cookie: `${_cookie.get("_uid")?.value}`,
           "Set-Cookie": `${_cookie.get("_uid")?.value}`,
         },
       },
     );
-    const res = await req.json();
+    let res = await req.json();
+    console.log(`response2 ===---->`, res);
+    req = await fetch(
+      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
+      {
+        // credentials: "include",
+        headers: _headers,
+      },
+    );
+    res = await req.json();
+    console.log(`response ===---->`, res);
+    console.log(`response2 ===---->`, res);
+    req = await fetch(
+      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
+      {
+        credentials: "include",
+        headers: _headers,
+      },
+    );
+    res = await req.json();
+    console.log(`response ===---->`, res);
+    req = await fetch(
+      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
+      {
+        credentials: "include",
+        headers: hdrs,
+      },
+    );
+    res = await req.json();
+    console.log(`response ===---->`, res);
+    req = await fetch(
+      `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
+      {
+        // credentials: "include",
+        headers: hdrs,
+      },
+    );
+    res = await req.json();
     console.log(`response ===---->`, res);
   } catch (error) {
     // @ts-ignore
