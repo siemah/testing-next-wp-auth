@@ -44,7 +44,7 @@ export async function signin(fd: FormData) {
     // console.log(`response`, response.code);
     // return response;
   } catch (error) {
-    console.log("[Error]", error.message);
+    console.log("[Error]", error);
     // return error;
   }
   redirect("/dashboard");
