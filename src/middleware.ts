@@ -11,18 +11,26 @@ export async function middleware(request: NextRequest) {
   // console.log(`_cookie--------------->`, _cookie);
   // console.log(`_headers--------------->`, _headers);
   try {
+    console.log(
+      `[[[[[[[[[[[[[[[[pathname: ${pathname}]]]]]]]]]]]]]]]]]`,
+      _cookie.get("_uid")?.value,
+    );
+    let hdrs = new Headers(_headers);
+    hdrs.append("Cookie", _cookie.get("_uid")?.value);
+    hdrs.append("Set-Cookie", _cookie.get("_uid")?.value);
     const req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
-        headers: _headers,
+        // credentials: "include",
+        headers: hdrs,
       },
     );
-    console.log(`req---->`, JSON.stringify(req.headers.entries(), null, 2));
     const res = await req.json();
+    console.log(`response ===---->`, res);
   } catch (error) {
+    // @ts-ignore
     console.log(`error----->`, error);
   }
-  console.log(`pathname: ${pathname}`, _cookie.toString());
   // const isSignedIn = user !== null && user !== undefined;
   // const isSignInPath = pathname.includes("/signin") === true;
 
