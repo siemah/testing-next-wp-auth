@@ -11,23 +11,25 @@ export async function middleware(request: NextRequest) {
   // console.log(`_cookie--------------->`, _cookie);
   // console.log(`_headers--------------->`, _headers);
   try {
-    console.log(
-      `[[[[[[[[[[[[[[[[pathname: ${pathname}]]]]]]]]]]]]]]]]]`,
-      _cookie.get("_uid")?.value,
-      request.cookies.getAll(),
-      request.cookies.getAll().toString(),
-    );
+    // console.log(
+    //   `[[[[[[[[[[[[[[[[pathname: ${pathname}]]]]]]]]]]]]]]]]]`,
+    //   _cookie.get("_uid")?.value,
+    //   request.cookies.getAll(),
+    //   request.cookies.getAll().toString(),
+    // );
     let req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
-        headers: {
-          Cookie: `${_cookie.get("_uid")?.value}`,
-          "Set-Cookie": `${_cookie.get("_uid")?.value}`,
-        },
+        headers: request.headers,
       },
     );
+    console.log(
+      `response2 ===---->`,
+      req.headers.get("Cookie"),
+      `response2 ===---->`,
+      req.headers.getSetCookie(),
+    );
     let res = await req.json();
-    console.log(`response2 ===---->`, res);
   } catch (error) {
     // @ts-ignore
     console.log(`error----->`, error);
