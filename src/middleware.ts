@@ -30,6 +30,7 @@ export async function middleware(request: NextRequest) {
       req.headers.getSetCookie(),
     );
     let res = await req.json();
+    console.log(res);
     req = await fetch(
       `https://soukesmar.com/wp-json/zz-mobile-app/v1/auth/refresh`,
       {
@@ -45,6 +46,7 @@ export async function middleware(request: NextRequest) {
       req.headers.getSetCookie(),
     );
     res = await req.json();
+    console.log(res);
   } catch (error) {
     // @ts-ignore
     console.log(`error----->`, error);
